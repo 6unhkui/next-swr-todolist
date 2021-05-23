@@ -1,0 +1,46 @@
+@import "../_variable.scss";
+
+.item {
+    margin-top: 14px;
+    border-bottom: 1px solid $gray-color;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    .content {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &.done {
+            color: $gray-color;
+            text-decoration: line-through;
+        }
+    }
+
+    .checkbox {
+        font-size: 1.4rem;
+        color: $primary-color;
+        position: relative;
+        top: 2px;
+        margin-right: 8px;
+        transition: ease 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            color: lighten($primary-color, 20);
+        }
+    }
+
+    .deleteBtn {
+        font-size: 1.2rem;
+        color: $gray-color;
+        margin-left: auto;
+        transition: ease 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            color: lighten($gray-color, 20);
+        }
+    }
+}

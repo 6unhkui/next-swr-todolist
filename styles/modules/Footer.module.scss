@@ -1,0 +1,12 @@
+@import "../_variable.scss";
+
+.wrapper {
+    color: $gray-color;
+    padding-top: 20px;
+}
+
+.copy {
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}

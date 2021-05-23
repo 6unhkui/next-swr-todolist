@@ -1,0 +1,19 @@
+@import "../_variable.scss";
+
+.wrapper {
+    background: #fff;
+    height: 70vh;
+    overflow-y: scroll;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    &.small {
+        width: $wrapper-small-size;
+    }
+
+    &.medium {
+        width: $wrapper-medium-size;
+    }
+}

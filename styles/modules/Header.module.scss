@@ -1,0 +1,26 @@
+@import "../_variable.scss";
+
+.wrapper {
+    margin-bottom: 14px;
+
+    &.small {
+        width: $wrapper-small-size;
+    }
+
+    &.medium {
+        width: $wrapper-medium-size;
+    }
+}
+
+.navItem {
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 10px;
+        &::after {
+            margin-left: 10px;
+            content: "|";
+            color: $gray-color;
+        }
+    }
+}

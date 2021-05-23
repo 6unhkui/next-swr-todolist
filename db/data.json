@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "서버 배포하기",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "content": "SWR 공부하기",
+      "checked": false
+    }
+  ]
+}
