@@ -1,11 +1,12 @@
 import { Todo } from "interfaces/Todo";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import useSWR from "swr";
 import style from "../styles/modules/index.module.scss";
 import { fetcher } from "./_app";
 import http from "../utils/http";
 import TodoItem from "components/TodoItem";
 import { NextPage } from "next";
+import useInput from "hooks/useInput";
 
 interface IndexPageProps {
     todos: Todo[];
@@ -13,15 +14,11 @@ interface IndexPageProps {
 
 const IndexPage: NextPage<IndexPageProps> = ({ todos: initialData = [] }) => {
     const { data: todos, error, mutate } = useSWR<Todo[]>("/todos", { initialData });
-    const [input, setInput] = useState<string>("");
+    const { input, onChange } = useInput();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
         inputRef.current?.focus();
-    }, []);
-
-    const onChangeInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setInput(e.target.value);
     }, []);
 
     const onSubmit = useCallback(
@@ -35,7 +32,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ todos: initialData = [] }) => {
             }).then(res => {
                 const data = res.data as Todo;
                 mutate([...(todos ? todos : []), data], false);
-                setInput("");
+                onChange("");
             });
         },
         [input, todos, mutate]
@@ -80,7 +77,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ todos: initialData = [] }) => {
                     type="text"
                     name="content"
                     className={style.input}
-                    onChange={onChangeInput}
+                    onChange={onChange}
                     value={input}
                     placeholder="Type Here..."
                     ref={inputRef}
